@@ -21,6 +21,11 @@ public class JuegoAdivinarFig {
     public JuegoAdivinarFig(  Jugador jugador) {
         this.jugador = jugador;
         this.figuras = new ArrayList<>();
+        crearFiguras();
+    }
+    public JuegoAdivinarFig() {
+        this.figuras = new ArrayList<>();
+        crearFiguras();
     }
 
     public Jugador getJugador() {
@@ -36,10 +41,35 @@ public class JuegoAdivinarFig {
         System.out.println("Figura añadida correctamente.");
     }
     
+    public void crearFiguras(){
+        Figura circuloPequeno = new Figura("circulo", "pequeno", "a");
+        Figura circuloMediano = new Figura("circulo", "mediano", "a");
+        Figura circuloGrande  = new Figura("circulo", "grande", "a");
+        Figura cuadradoPequeno  = new Figura("cuadrado", "pequeno", "a");
+        Figura cuadradoMediano  = new Figura("cuadrado", "mediano", "a");
+        Figura cuadradoGrande  = new Figura("cuadrado", "grande", "a");
+        Figura trianguloPequeno  = new Figura("triangulo", "pequeno", "a");
+        Figura trianguloMediano  = new Figura("triangulo", "mediano", "a");
+        Figura trianguloGrande  = new Figura("triangulo", "grande", "a");
+        
+        añadirFigura(circuloPequeno);
+        añadirFigura(circuloMediano);
+        añadirFigura(circuloGrande);
+        añadirFigura(cuadradoPequeno);
+        añadirFigura(cuadradoMediano);
+        añadirFigura(cuadradoGrande);
+        añadirFigura(trianguloPequeno);
+        añadirFigura(trianguloMediano);
+        añadirFigura(trianguloGrande);
+        
+    }
+    
     public boolean iniciarJuego(){
         
         for (int i = 0; i < figuras.size(); i++) {
             figuras.get(i).getNombre();
+            System.out.println(figuras.get(i).getNombre());
+            
         }
         
         
