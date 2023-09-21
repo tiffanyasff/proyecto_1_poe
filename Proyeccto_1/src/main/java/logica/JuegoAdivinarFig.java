@@ -12,7 +12,7 @@ import modelo.Jugador;
 
 /**
  *
- * @author pablo
+ * @author pablo y titi
  */
 public class JuegoAdivinarFig {
     private ArrayList<Figura> figuras;
@@ -35,6 +35,17 @@ public class JuegoAdivinarFig {
         figuras.add(fig);
         System.out.println("Figura añadida correctamente.");
     }
+    
+    public boolean iniciarJuego(){
+        
+        for (int i = 0; i < figuras.size(); i++) {
+            figuras.get(i).getNombre();
+        }
+        
+        
+        return true;
+    }
+    
     
     
     
