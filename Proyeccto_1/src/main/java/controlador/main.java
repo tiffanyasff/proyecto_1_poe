@@ -6,6 +6,8 @@ package controlador;
 
 import vista.VentanaPrincipal;
 
+import vista.VentanaDeJuego;
+
 /**
  *
  * @author pablo
@@ -13,6 +15,7 @@ import vista.VentanaPrincipal;
 public class main {
     public static void main(String[] args) {
         VentanaPrincipal ventana = new VentanaPrincipal();
+        VentanaDeJuego ventanaJUego = new VentanaDeJuego();
     }
     
 }
