@@ -16,12 +16,15 @@ import vista.VentanaDeJuego;
 public class main {
     public static void main(String[] args) {
 
+
         //VentanaPrincipal ventana = new VentanaPrincipal();
         //JuegoAdivinarFig juego = new JuegoAdivinarFig();
         //juego.iniciarJuego();
 
      
-        VentanaDeJuego ventanaJUego = new VentanaDeJuego();
+
+        //VentanaPrincipal ventana = new VentanaPrincipal();
+        VentanaDeJuego ventanaJuego = new VentanaDeJuego();
 
     }
     
