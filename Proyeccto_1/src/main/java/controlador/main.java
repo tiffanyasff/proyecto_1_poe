@@ -7,15 +7,22 @@ package controlador;
 import logica.JuegoAdivinarFig;
 import vista.VentanaPrincipal;
 
+import vista.VentanaDeJuego;
+
 /**
  *
  * @author pablo
  */
 public class main {
     public static void main(String[] args) {
+
         //VentanaPrincipal ventana = new VentanaPrincipal();
-        JuegoAdivinarFig juego = new JuegoAdivinarFig();
-        juego.iniciarJuego();
+        //JuegoAdivinarFig juego = new JuegoAdivinarFig();
+        //juego.iniciarJuego();
+
+     
+        VentanaDeJuego ventanaJUego = new VentanaDeJuego();
+
     }
     
 }
