@@ -27,12 +27,13 @@ public class VentanaDeJuego {
     
     public void iniciarComponentes(){
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(4, 1));
+        panel.setLayout(new GridLayout(1, 4));
 
         // Etiqueta y campo de texto para ingresar el nombre 
         
         btnUno = new JButton("boton uno");
         panel.add(btnUno);
+        btnUno.setEnabled(false);
         
         btnDos = new JButton("boton dos");
         panel.add(btnDos);
@@ -42,7 +43,7 @@ public class VentanaDeJuego {
         btnTres = new JButton("boton tres");
         panel.add( btnTres);
         
-         btnCuatro = new JButton("boton 4");
+         btnCuatro = new JButton("boton tres");
         panel.add( btnCuatro);
         
         
