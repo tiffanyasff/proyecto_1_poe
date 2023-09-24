@@ -60,6 +60,10 @@ public class Figura {
         this.rutaImg = rutaImg;
     }
     
+    public boolean validarOpcion(int opcion){
+        return opcion == this.getOpcionCorrecta();
+    }
+    
     
     
     

@@ -16,6 +16,7 @@ import modelo.Jugador;
  * @author pablo y titi
  */
 public class JuegoAdivinarFig {
+    private int posicionArreglos;
     private ArrayList<Figura> figuras;
     private Jugador jugador;
     private Scanner scanner = new Scanner(System.in);
@@ -23,8 +24,19 @@ public class JuegoAdivinarFig {
     public JuegoAdivinarFig(  Jugador jugador) {
         this.jugador = jugador;
         this.figuras = new ArrayList<>();
+        this.posicionArreglos = 0;
         crearFiguras();
     }
+
+    public int getPosicionArreglos() {
+        return posicionArreglos;
+    }
+
+    public void setPosicionArreglos(int posicionArreglos) {
+        this.posicionArreglos = posicionArreglos;
+    }
+    
+    
     public JuegoAdivinarFig() {
         this.figuras = new ArrayList<>();
         crearFiguras();
@@ -78,7 +90,8 @@ public class JuegoAdivinarFig {
             while (!respuestaCorrecta) {
                 System.out.print("¿Cuál es la opción correcta (1, 2 o 3)? ");
                 int opcionUsuario = scanner.nextInt();
-                if (opcionUsuario == figuras.get(i).getOpcionCorrecta()) {
+                
+                if (figuras.get(i).validarOpcion(opcionUsuario)) {
                     System.out.println("¡Respuesta correcta!");
                     respuestaCorrecta = true;
                 } else {
