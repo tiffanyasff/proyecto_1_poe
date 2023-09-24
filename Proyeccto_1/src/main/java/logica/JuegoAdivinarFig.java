@@ -5,6 +5,7 @@
 package logica;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 import modelo.Figura;
 import modelo.Jugador;
 
@@ -17,6 +18,7 @@ import modelo.Jugador;
 public class JuegoAdivinarFig {
     private ArrayList<Figura> figuras;
     private Jugador jugador;
+    private Scanner scanner = new Scanner(System.in);
 
     public JuegoAdivinarFig(  Jugador jugador) {
         this.jugador = jugador;
@@ -67,19 +69,26 @@ public class JuegoAdivinarFig {
     public boolean iniciarJuego(){
         
         for (int i = 0; i < figuras.size(); i++) {
-            figuras.get(i).getNombre();
-            System.out.println(figuras.get(i).getNombre());
-            System.out.println(figuras.get(i).getOpcionCorrecta());
             
+            //System.out.println(figuras.get(i).getNombre());
+            //System.out.println(figuras.get(i).getOpcionCorrecta());
+            
+            
+            boolean respuestaCorrecta = false;
+            while (!respuestaCorrecta) {
+                System.out.print("¿Cuál es la opción correcta (1, 2 o 3)? ");
+                int opcionUsuario = scanner.nextInt();
+                if (opcionUsuario == figuras.get(i).getOpcionCorrecta()) {
+                    System.out.println("¡Respuesta correcta!");
+                    respuestaCorrecta = true;
+                } else {
+                    System.out.println("Respuesta incorrecta. Inténtalo nuevamente.");
+                }
+            }
         }
         
+        scanner.close();
         
         return true;
-    }
-    
-    
-    
-    
-    
-    
+    }    
 }
