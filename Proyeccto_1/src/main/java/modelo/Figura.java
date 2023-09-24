@@ -8,16 +8,33 @@ package modelo;
  *
  * @author pablo
  */
+
+
+import java.util.Random;
+
 public class Figura {
     String nombre;
     String tamano;
     String rutaImg;
+    int opcionCorrecta;
 
     public Figura(String nombre, String tamano, String rutaImg) {
         this.nombre = nombre;
         this.tamano = tamano;
         this.rutaImg = rutaImg;
+        Random random = new Random();
+        this.opcionCorrecta = random.nextInt(3) + 1;
+     
     }
+
+    public int getOpcionCorrecta() {
+        return opcionCorrecta;
+    }
+
+    public void setOpcionCorrecta(int opcionCorrecta) {
+        this.opcionCorrecta = opcionCorrecta;
+    }
+    
 
     public String getNombre() {
         return nombre;

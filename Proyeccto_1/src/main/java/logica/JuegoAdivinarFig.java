@@ -69,6 +69,7 @@ public class JuegoAdivinarFig {
         for (int i = 0; i < figuras.size(); i++) {
             figuras.get(i).getNombre();
             System.out.println(figuras.get(i).getNombre());
+            System.out.println(figuras.get(i).getOpcionCorrecta());
             
         }
         
