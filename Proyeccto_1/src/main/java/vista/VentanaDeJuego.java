@@ -26,7 +26,7 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
     private JButton  btnTres;
     private JButton   btnCuatro;
     private ImageIcon im;
-    private Icon i ;
+    //private Icon i ;
     
     public VentanaDeJuego(){
         ventanaJuego = new JFrame("Juego");
@@ -38,18 +38,21 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
     public void iniciarComponentes(){
         juego = new JuegoAdivinarFig();
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(1, 4));
+        panel.setLayout(null);
 
-        btnUno.setBounds(10, 10, 10, 10);
+        btnUno = new JButton();
+        btnUno.setBounds(50, 150, 100, 50);
         im = new ImageIcon("circulo.png");
-        i = new ImageIcon(im.getImage().getScaledInstance(btnUno.getWidth(), btnUno.getHeight(),Image.SCALE_DEFAULT));
-        btnDos.setIcon(i);
+        btnUno.setIcon(new ImageIcon(im.getImage().getScaledInstance(btnUno.getWidth(), btnUno.getHeight(), Image.SCALE_SMOOTH)));
+        //btnUno.setIcon(i);
         
-        btnUno = new JButton("boton uno");
+        //btnUno = new JButton("boton uno");
+        //btnUno.setBounds(10, 10, 10, 10);
+        
         panel.add(btnUno);
-        btnUno.setEnabled(false);
+        btnUno.setEnabled(true);
         
-        btnDos = new JButton(im);
+        btnDos = new JButton();
         panel.add(btnDos);
         
         
