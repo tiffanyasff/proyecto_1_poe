@@ -53,28 +53,29 @@ public class JuegoAdivinarFig {
     public void añadirFigura (Figura fig){
         figuras.add(fig);
         System.out.println("Figura añadida correctamente.");
+        System.out.println(fig.getOpcionCorrecta());
     }
     
     public void crearFiguras(){
-        Figura circuloPequeno = new Figura("circulo", "pequeno", "a");
-        Figura circuloMediano = new Figura("circulo", "mediano", "a");
-        Figura circuloGrande  = new Figura("circulo", "grande", "a");
-        Figura cuadradoPequeno  = new Figura("cuadrado", "pequeno", "a");
-        Figura cuadradoMediano  = new Figura("cuadrado", "mediano", "a");
-        Figura cuadradoGrande  = new Figura("cuadrado", "grande", "a");
-        Figura trianguloPequeno  = new Figura("triangulo", "pequeno", "a");
-        Figura trianguloMediano  = new Figura("triangulo", "mediano", "a");
-        Figura trianguloGrande  = new Figura("triangulo", "grande", "a");
+        Figura circulo = new Figura("circulo", "pequeno", "a");
+        Figura cuadrado = new Figura("circulo", "mediano", "a");
+        Figura triangulo  = new Figura("circulo", "grande", "a");
+        Figura rectangulo  = new Figura("cuadrado", "pequeno", "a");
+        Figura estrella  = new Figura("cuadrado", "mediano", "a");
+        Figura otraFig1  = new Figura("cuadrado", "grande", "a");
+        Figura otraFig2  = new Figura("triangulo", "pequeno", "a");
+        Figura otraFig3  = new Figura("triangulo", "mediano", "a");
+        Figura otraFig4  = new Figura("triangulo", "grande", "a");
         
-        añadirFigura(circuloPequeno);
-        añadirFigura(circuloMediano);
-        añadirFigura(circuloGrande);
-        añadirFigura(cuadradoPequeno);
-        añadirFigura(cuadradoMediano);
-        añadirFigura(cuadradoGrande);
-        añadirFigura(trianguloPequeno);
-        añadirFigura(trianguloMediano);
-        añadirFigura(trianguloGrande);
+        añadirFigura(circulo);
+        añadirFigura(cuadrado);
+        añadirFigura(triangulo);
+        añadirFigura(rectangulo);
+        añadirFigura(estrella);
+        añadirFigura(otraFig1);
+        añadirFigura(otraFig2);
+        añadirFigura(otraFig3);
+        añadirFigura(otraFig4);
         
     }
     
@@ -84,8 +85,6 @@ public class JuegoAdivinarFig {
             
             //System.out.println(figuras.get(i).getNombre());
             //System.out.println(figuras.get(i).getOpcionCorrecta());
-            
-            
             boolean respuestaCorrecta = false;
             while (!respuestaCorrecta) {
                 System.out.print("¿Cuál es la opción correcta (1, 2 o 3)? ");
@@ -103,5 +102,9 @@ public class JuegoAdivinarFig {
         scanner.close();
         
         return true;
-    }    
+    }   
+    
+    public ArrayList<Figura> obtenerFiguras() {
+        return figuras;
+    }
 }
