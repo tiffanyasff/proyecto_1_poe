@@ -40,41 +40,29 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         JPanel panel = new JPanel();
         panel.setLayout(null);
 
-        btnUno = new JButton();
-        btnUno.setBounds(50, 150, 100, 50);
         im = new ImageIcon("circulo.png");
-        btnUno.setIcon(new ImageIcon(im.getImage().getScaledInstance(btnUno.getWidth(), btnUno.getHeight(), Image.SCALE_SMOOTH)));
-        //btnUno.setIcon(i);
-        
-        //btnUno = new JButton("boton uno");
-        //btnUno.setBounds(10, 10, 10, 10);
-        
+        btnUno = new JButton();
+        btnUno.setBounds(50, 150, 100, 100);
         panel.add(btnUno);
         btnUno.setEnabled(true);
         
         btnDos = new JButton();
+        btnDos.setBounds(220, 150, 100, 100);
         panel.add(btnDos);
         
         
         btnTres = new JButton("boton tres");
+        btnTres.setBounds(390, 150, 100, 100);
         panel.add( btnTres);
         
         btnCuatro = new JButton("boton tres");
+        btnCuatro.setBounds(560, 150, 100, 100);
         panel.add( btnCuatro);
         
         
-        //btnUno.addActionListener(this);
-        //btnDos.addActionListener(this);
-        //btnTres.addActionListener(this);
-        //btnCuatro.addActionListener(this);
         
         ventanaJuego.add(panel);
         ventanaJuego.setVisible(true);
-        
-        //btnUno.setIcon(cargarImagen("src/img/circulo.png"));
-        //btnDos.setIcon(cargarImagen("src/img/circulo.png"));
-        //btnTres.setIcon(cargarImagen("src/img/circulo.png"));
-        //btnCuatro.setIcon(cargarImagen("src/img/circulo.png"));
         
         
     }
