@@ -18,6 +18,7 @@ public class VentanaPrincipal {
     private JTextField campoNombre;
     private JButton btnIniciarJuego;
     private JButton btnInstrucciones;
+    private JLabel etqNombre;
     
     public VentanaPrincipal(){
         ventana = new JFrame("Juego Preescolar");
@@ -28,10 +29,11 @@ public class VentanaPrincipal {
     
     public void iniciarComponentes(){
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(4, 1));
+        panel.setLayout(null);
 
         // Etiqueta y campo de texto para ingresar el nombre
         JLabel etiquetaNombre = new JLabel("Nombre del Jugador:");
+        
         etiquetaNombre.setHorizontalAlignment(SwingConstants.CENTER);
         Font fuente = etiquetaNombre.getFont();
         etiquetaNombre.setFont(new Font(fuente.getName(), Font.BOLD, 20)); 
