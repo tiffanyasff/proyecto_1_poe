@@ -57,25 +57,25 @@ public class JuegoAdivinarFig {
     }
     
     public void crearFiguras(){
-        Figura circulo = new Figura("circulo", "pequeno", "a");
-        Figura cuadrado = new Figura("circulo", "mediano", "a");
-        Figura triangulo  = new Figura("circulo", "grande", "a");
-        Figura rectangulo  = new Figura("cuadrado", "pequeno", "a");
-        Figura estrella  = new Figura("cuadrado", "mediano", "a");
-        Figura otraFig1  = new Figura("cuadrado", "grande", "a");
-        Figura otraFig2  = new Figura("triangulo", "pequeno", "a");
-        Figura otraFig3  = new Figura("triangulo", "mediano", "a");
-        Figura otraFig4  = new Figura("triangulo", "grande", "a");
+        Figura circulo = new Figura("circulo", "pequeno", "img/circulo.png");
+        Figura cuadrado = new Figura("cuadrado", "mediano", "img/cuadrado.png");
+        Figura triangulo  = new Figura("triangulo", "grande", "img/triangulo.png");
+        Figura rectangulo  = new Figura("rectangulo", "pequeno", "img/rectangulo.png");
+        Figura estrella  = new Figura("estrella", "mediano", "img/estrella.png");
+        Figura luna  = new Figura("luna", "grande", "img/luna.png");
+        Figura corazon  = new Figura("corazon", "pequeno", "img/corazon.png");
+        Figura pentagono  = new Figura("pentagono", "mediano", "img/pentagono.png");
+        Figura hexagono  = new Figura("hexagono", "grande", "img/hexagono.png");
         
         añadirFigura(circulo);
         añadirFigura(cuadrado);
         añadirFigura(triangulo);
         añadirFigura(rectangulo);
         añadirFigura(estrella);
-        añadirFigura(otraFig1);
-        añadirFigura(otraFig2);
-        añadirFigura(otraFig3);
-        añadirFigura(otraFig4);
+        añadirFigura(luna);
+        añadirFigura(corazon);
+        añadirFigura(pentagono);
+        añadirFigura(hexagono);
         
     }
     

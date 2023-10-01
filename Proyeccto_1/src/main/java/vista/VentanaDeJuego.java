@@ -29,14 +29,15 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
     private JLabel etqDos;
     private JLabel etqTres;
     private JLabel etqCuatro;
+    private JLabel separador;
     private JFrame frame;
     private JPanel panel;
     private int ronda = 0;
     private ArrayList<Figura> rondas;
+    private int tamanoFiguraUno;
     private int tamanoFiguraDos;
     private int tamanoFiguraTres;
     private int tamanoFiguraCuatro;
-    
     
     public VentanaDeJuego(){
         ventanaJuego = new JFrame("Juego");
@@ -45,22 +46,28 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         iniciarComponentes();
     }
     
-    
+ 
     
     public void iniciarComponentes(){
         juego = new JuegoAdivinarFig();
         panel = new JPanel();
         panel.setLayout(null);
+        panel.setBackground(new Color(255, 255, 153));
+       // panel.setBackground(Color.BLUE);
+
+
         
         frame = new JFrame("Mi Ventana");
         etqUno = new JLabel();
         etqDos = new JLabel();
         etqTres = new JLabel();
         etqCuatro = new JLabel();
-        
-        asignarImg("ruta");
+        separador = new JLabel();
+      
         
         rondas = juego.obtenerFiguras();
+        asignarImg(rondas.get(ronda).getRutaImg());
+        //ronda+=1;
         
         etqUno.addMouseListener(new MouseAdapter() {
         @Override
@@ -69,8 +76,8 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
             String textoEtqUno = etqUno.getText();
             JOptionPane.showMessageDialog(frame, "Etiqueta Uno fue clicada. Valor: " + textoEtqUno);
             //asignarValoresAleatorios();
-            asignarImg("a");
-            
+           /* asignarImg(rondas.get(ronda).getRutaImg());
+            ronda+=1;*/
             //aca va a esta la funcion que valida todo y las comparaciones y la funcion que vuelve a poner las figuras y asignar los valores de los botones
         }
         });
@@ -81,6 +88,15 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
             String textoEtqDos = etqDos.getText();
             JOptionPane.showMessageDialog(frame, "Etiqueta Uno fue clicada. Valor: " + textoEtqDos);
             System.out.println(tamanoFiguraTres);
+            
+            if (rondas.get(ronda).validarOpcion(tamanoFiguraDos)){
+                
+                ronda+=1;
+                asignarImg(rondas.get(ronda).getRutaImg());
+                  
+            }else {
+                System.out.println("opcion incorrecta");
+            }
         }
         });
         
@@ -89,6 +105,15 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         public void mouseClicked(MouseEvent e) {            
             String textoEtqTres = etqTres.getText();
             JOptionPane.showMessageDialog(frame, "Etiqueta Uno fue clicada. Valor: " + textoEtqTres);
+            
+             if (rondas.get(ronda).validarOpcion(tamanoFiguraTres)){
+                
+                ronda+=1;
+                asignarImg(rondas.get(ronda).getRutaImg());
+                  
+            }else {
+                System.out.println("opcion incorrecta");
+            }
         }
         });
         
@@ -97,6 +122,15 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         public void mouseClicked(MouseEvent e) {          
             String textoEtqCuatro = etqCuatro.getText();
             JOptionPane.showMessageDialog(frame, "Etiqueta Uno fue clicada. Valor: " + textoEtqCuatro);
+            
+             if (rondas.get(ronda).validarOpcion(tamanoFiguraCuatro)){
+                
+                ronda+=1;
+                asignarImg(rondas.get(ronda).getRutaImg());
+                  
+            }else {
+                System.out.println("opcion incorrecta");
+            }
         }
         });
         
@@ -129,14 +163,42 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         int valorEtqCuatro = valoresDisponibles.get(0);
         etqCuatro.setText(String.valueOf(valorEtqCuatro));
         tamanoFiguraCuatro = valorEtqCuatro;
+        
+        ImageIcon imagenSeparador = new ImageIcon("img/separador.png");
+        separador = new JLabel();
+        separador.setBounds(100, -70, 100, 510);
+        separador.setIcon(new ImageIcon(imagenSeparador.getImage().getScaledInstance(separador.getWidth(), separador.getHeight(), Image.SCALE_SMOOTH)));
+        panel.add(separador);
+       
+       
     }
     
+    
     public void asignarImg(String ruta){
-        
+       
         asignarValoresAleatorios();
-        ImageIcon imagen1 = new ImageIcon("img/circulo.png");
+        ImageIcon imagen1 = new ImageIcon(ruta);
         //etqUno = new JLabel();
         etqUno.setBounds(50, 120, 100, 100);
+        etqUno.setIcon(new ImageIcon(imagen1.getImage().getScaledInstance(etqUno.getWidth(), etqUno.getHeight(), Image.SCALE_SMOOTH)));
+        panel.add(etqUno);
+        tamanoFiguraUno = rondas.get(ronda).getOpcionCorrecta();
+        
+         switch (tamanoFiguraUno) {
+            case 1:
+                etqUno.setBounds(50, 120, 50, 50); // Tamaño pequeño
+                break;
+            case 2:
+                etqUno.setBounds(50, 120, 75, 75); // Tamaño mediano
+                break;
+            case 3:
+                etqUno.setBounds(50, 120, 100, 100); // Tamaño grande
+                break;
+            default:
+                // Puedes manejar un caso por defecto si es necesario
+                break;
+        }
+    
         etqUno.setIcon(new ImageIcon(imagen1.getImage().getScaledInstance(etqUno.getWidth(), etqUno.getHeight(), Image.SCALE_SMOOTH)));
         panel.add(etqUno);
        
@@ -147,7 +209,7 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         etqDos.setIcon(new ImageIcon(imagen2.getImage().getScaledInstance(etqDos.getWidth(), etqDos.getHeight(), Image.SCALE_SMOOTH)));
         panel.add(etqDos);*/
         
-        ImageIcon imagen2 = new ImageIcon("img/circulo.png");
+        ImageIcon imagen2 = new ImageIcon(ruta);
         
         //etqDos = new JLabel();
         //etqDos.setBounds(200, 120, 100, 100);
@@ -177,7 +239,7 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         etqTres.setIcon(new ImageIcon(imagen3.getImage().getScaledInstance(etqTres.getWidth(), etqTres.getHeight(), Image.SCALE_SMOOTH)));
         panel.add(etqTres);*/
         
-        ImageIcon imagen3 = new ImageIcon("img/circulo.png");
+        ImageIcon imagen3 = new ImageIcon(ruta);
         
         switch (tamanoFiguraTres) {
           case 1:
@@ -196,8 +258,6 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
     
         etqTres.setIcon(new ImageIcon(imagen3.getImage().getScaledInstance(etqTres.getWidth(), etqTres.getHeight(), Image.SCALE_SMOOTH)));
         panel.add(etqTres);
-    
-        
         
         
        /* ImageIcon imagen4 = new ImageIcon("circulo.png");
@@ -206,7 +266,7 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         etqCuatro.setIcon(new ImageIcon(imagen4.getImage().getScaledInstance(etqCuatro.getWidth(), etqCuatro.getHeight(), Image.SCALE_SMOOTH)));
         panel.add(etqCuatro);*/
        
-       ImageIcon imagen4 = new ImageIcon("img/circulo.png");
+       ImageIcon imagen4 = new ImageIcon(ruta);
        
         switch (tamanoFiguraCuatro) {
           case 1:
@@ -234,10 +294,5 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
-    
-    
-   
-    
     
 }
