@@ -134,7 +134,7 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
     public void asignarImg(String ruta){
         
         asignarValoresAleatorios();
-        ImageIcon imagen1 = new ImageIcon("circulo.png");
+        ImageIcon imagen1 = new ImageIcon("img/circulo.png");
         //etqUno = new JLabel();
         etqUno.setBounds(50, 120, 100, 100);
         etqUno.setIcon(new ImageIcon(imagen1.getImage().getScaledInstance(etqUno.getWidth(), etqUno.getHeight(), Image.SCALE_SMOOTH)));
@@ -147,7 +147,7 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         etqDos.setIcon(new ImageIcon(imagen2.getImage().getScaledInstance(etqDos.getWidth(), etqDos.getHeight(), Image.SCALE_SMOOTH)));
         panel.add(etqDos);*/
         
-        ImageIcon imagen2 = new ImageIcon("circulo.png");
+        ImageIcon imagen2 = new ImageIcon("img/circulo.png");
         
         //etqDos = new JLabel();
         //etqDos.setBounds(200, 120, 100, 100);
@@ -177,7 +177,7 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         etqTres.setIcon(new ImageIcon(imagen3.getImage().getScaledInstance(etqTres.getWidth(), etqTres.getHeight(), Image.SCALE_SMOOTH)));
         panel.add(etqTres);*/
         
-        ImageIcon imagen3 = new ImageIcon("circulo.png");
+        ImageIcon imagen3 = new ImageIcon("img/circulo.png");
         
         switch (tamanoFiguraTres) {
           case 1:
@@ -206,7 +206,7 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         etqCuatro.setIcon(new ImageIcon(imagen4.getImage().getScaledInstance(etqCuatro.getWidth(), etqCuatro.getHeight(), Image.SCALE_SMOOTH)));
         panel.add(etqCuatro);*/
        
-       ImageIcon imagen4 = new ImageIcon("circulo.png");
+       ImageIcon imagen4 = new ImageIcon("img/circulo.png");
        
         switch (tamanoFiguraCuatro) {
           case 1:
