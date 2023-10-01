@@ -52,8 +52,7 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         juego = new JuegoAdivinarFig();
         panel = new JPanel();
         panel.setLayout(null);
-        panel.setBackground(new Color(255, 255, 153));
-       // panel.setBackground(Color.BLUE);
+        panel.setBackground(Color.WHITE);
 
 
         
