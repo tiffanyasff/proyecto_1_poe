@@ -12,9 +12,9 @@ public class Jugador {
     String nombre; 
     int intentos;
 
-    public Jugador(String nombre, int intentos) {
+    public Jugador(String nombre) {
         this.nombre = nombre;
-        this.intentos = intentos;
+        
     }
 
     public String getNombre() {
