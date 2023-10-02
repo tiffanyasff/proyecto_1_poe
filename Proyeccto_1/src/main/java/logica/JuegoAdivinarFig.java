@@ -52,7 +52,7 @@ public class JuegoAdivinarFig {
     
     public void añadirFigura (Figura fig){
         figuras.add(fig);
-        System.out.println("Figura añadida correctamente.");
+        System.out.println(fig.getNombre());
         System.out.println(fig.getOpcionCorrecta());
     }
     
@@ -76,9 +76,9 @@ public class JuegoAdivinarFig {
         añadirFigura(corazon);
         añadirFigura(pentagono);
         añadirFigura(hexagono);
-        for (int i = 0; i < figuras.size(); i++) {
-            System.out.println(figuras.get(i).getNombre());
-        }
+        /*for (int i = 0; i < figuras.size(); i++) {
+            System.out.println(figuras.get(i).getOpcionCorrecta());
+        }*/
         
     }
     
@@ -114,7 +114,7 @@ public class JuegoAdivinarFig {
     public void reiniciarValores(){
         for (int i = 0; i < figuras.size(); i++) {
             figuras.get(i).setOpcionCorrecta();
-            System.out.println("a");
+            System.out.println(figuras.get(i).getNombre());
             System.out.println(figuras.get(i).getOpcionCorrecta());
         }
     }

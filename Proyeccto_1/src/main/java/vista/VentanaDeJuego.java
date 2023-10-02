@@ -36,7 +36,7 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
     private JLabel separador;
     private JFrame frame;
     private JPanel panel;
-    private int ronda = 0;
+    private int ronda;
     private ArrayList<Figura> rondas;
     private ArrayList<Integer> opciones = new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8));
     private int tamanoFiguraUno;
@@ -47,7 +47,7 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
     
     public VentanaDeJuego(Jugador jugadorActual){
         ventanaJuego = new JFrame("Juego");
-        ventanaJuego.setSize(700, 400);
+        ventanaJuego.setSize(800, 500);
         ventanaJuego.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jugador = jugadorActual; 
         iniciarComponentes();
@@ -87,7 +87,6 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         @Override
         public void mouseClicked(MouseEvent e) {
             String textoEtqUno = etqUno.getText();
-            JOptionPane.showMessageDialog(frame, "Etiqueta Uno fue clicada. Valor: " + textoEtqUno);
         }
         });
         
@@ -95,8 +94,7 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         @Override
         public void mouseClicked(MouseEvent e) {            
             String textoEtqDos = etqDos.getText();
-            JOptionPane.showMessageDialog(frame, "Etiqueta Uno fue clicada. Valor: " + textoEtqDos);
-            System.out.println(tamanoFiguraTres);
+            
             
             if (rondas.get(ronda).validarOpcion(tamanoFiguraDos)){
                 
@@ -112,7 +110,6 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         @Override
         public void mouseClicked(MouseEvent e) {            
             String textoEtqTres = etqTres.getText();
-            JOptionPane.showMessageDialog(frame, "Etiqueta Uno fue clicada. Valor: " + textoEtqTres);
             
              if (rondas.get(ronda).validarOpcion(tamanoFiguraTres)){
                 
@@ -129,7 +126,7 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         @Override
         public void mouseClicked(MouseEvent e) {          
             String textoEtqCuatro = etqCuatro.getText();
-            JOptionPane.showMessageDialog(frame, "Etiqueta Uno fue clicada. Valor: " + textoEtqCuatro);
+            
             
              if (rondas.get(ronda).validarOpcion(tamanoFiguraCuatro)){
                 
@@ -255,9 +252,10 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
             rondas = juego.obtenerFiguras();  
         }
         int indiceAleatorio = random.nextInt(opciones.size());
-        System.out.println(opciones.size());
         int numeroAleatorio = opciones.get(indiceAleatorio);
         opciones.remove(indiceAleatorio);
+        ronda = numeroAleatorio;
+        
 
         return numeroAleatorio;
     }

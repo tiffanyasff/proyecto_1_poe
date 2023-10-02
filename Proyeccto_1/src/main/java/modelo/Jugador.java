@@ -11,8 +11,8 @@ package modelo;
 public class Jugador {
     String nombre; 
     int intentos;
-    int intentosFallados;
-    int intentosAcertados;
+    double intentosFallados;
+    double intentosAcertados;
 
     public Jugador(String nombre) {
         this.nombre = nombre;
@@ -34,22 +34,6 @@ public class Jugador {
     public void setIntentos(int intentos) {
         this.intentos = intentos;
     }
-
-    public int getIntentosFallados() {
-        return intentosFallados;
-    }
-
-    public void setIntentosFallados(int intentosFallados) {
-        this.intentosFallados = intentosFallados;
-    }
-
-    public int getIntentosAcertados() {
-        return intentosAcertados;
-    }
-
-    public void setIntentosAcertados(int intentosAcertados) {
-        this.intentosAcertados = intentosAcertados;
-    }
     
     public void sumarIntentos(){
         this.intentos +=1;
@@ -62,7 +46,42 @@ public class Jugador {
     public void sumarIntentosAcertados(){
         this.intentosAcertados +=1;
     }
+
+    public double getIntentosFallados() {
+        return intentosFallados;
+    }
+
+    public void setIntentosFallados(double intentosFallados) {
+        this.intentosFallados = intentosFallados;
+    }
+
+    public double getIntentosAcertados() {
+        return intentosAcertados;
+    }
+
+    public void setIntentosAcertados(double intentosAcertados) {
+        this.intentosAcertados = intentosAcertados;
+    }
     
+    
+    
+    public double porcentajeAciertos(){
+        if (intentos == 0) {
+            return 0.0; 
+        }
+
+        double porcentaje = ((double) intentosAcertados / intentos) * 100.0;
+        return porcentaje;
+    }
+    
+    public double porcentajeFallo(){
+        if (intentos == 0) {
+            return 0.0; 
+        }
+
+        double porcentaje = ((double) intentosFallados / intentos) * 100.0;
+        return porcentaje;
+    }
     
     
 }
