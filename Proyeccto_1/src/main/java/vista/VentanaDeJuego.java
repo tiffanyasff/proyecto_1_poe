@@ -90,6 +90,12 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         public void mouseClicked(MouseEvent e) {
             VentanaPrincipal ventanaP = new VentanaPrincipal();
             ventanaJuego.dispose();
+        
+            JOptionPane.showMessageDialog(null, 
+    "intentos: " + jugador.getIntentos() + "\n" +
+    "porcentaje de aciertos: " + jugador.porcentajeAciertos() + "\n" +
+    "porcentaje de errores: " + jugador.porcentajeFallo());
+            
         }
         });
       
@@ -111,10 +117,12 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
             
             
             if (rondas.get(ronda).validarOpcion(tamanoFiguraDos)){
-                
-                //ronda+=1;
+                jugador.sumarIntentos();
+                jugador.sumarIntentosAcertados();
                 asignarImg(rondas.get(obtenerNumeroAleatorio()).getRutaImg());      
             }else {
+                jugador.sumarIntentos();
+                jugador.sumarIntentosFallados();
                 System.out.println("opcion incorrecta");
             }
         }
@@ -126,12 +134,14 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
             String textoEtqTres = etqTres.getText();
             
              if (rondas.get(ronda).validarOpcion(tamanoFiguraTres)){
-                
-                //ronda+=1;
+                jugador.sumarIntentos();
+                jugador.sumarIntentosAcertados();
                 asignarImg(rondas.get(obtenerNumeroAleatorio()).getRutaImg());
                   
             }else {
                 System.out.println("opcion incorrecta");
+                jugador.sumarIntentos();
+                jugador.sumarIntentosFallados();
             }
         }
         });
@@ -143,12 +153,15 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
             
             
              if (rondas.get(ronda).validarOpcion(tamanoFiguraCuatro)){
-                
-                //ronda+=1;
+                jugador.sumarIntentos();
+                jugador.sumarIntentosAcertados();
+               
                 asignarImg(rondas.get(obtenerNumeroAleatorio()).getRutaImg());
                   
             }else {
                 System.out.println("opcion incorrecta");
+                jugador.sumarIntentos();
+                jugador.sumarIntentosFallados();
             }
         }
         });
@@ -185,7 +198,7 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         
         ImageIcon imagenSeparador = new ImageIcon("img/separador.png");
         separador = new JLabel();
-        separador.setBounds(100, -70, 100, 510);
+        separador.setBounds(100, -70, 100, 600);
         separador.setIcon(new ImageIcon(imagenSeparador.getImage().getScaledInstance(separador.getWidth(), separador.getHeight(), Image.SCALE_SMOOTH)));
         panel.add(separador);
        
