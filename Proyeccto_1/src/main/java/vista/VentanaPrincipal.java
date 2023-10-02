@@ -110,7 +110,8 @@ public class VentanaPrincipal {
             public void mouseClicked(MouseEvent e) {
                 Jugador jugador = new Jugador(campoNombre.getText());
                 jugador.getNombre();
-                VentanaDeJuego ventanaJuego = new VentanaDeJuego();
+                System.out.println(jugador.getNombre());
+                VentanaDeJuego ventanaJuego = new VentanaDeJuego(jugador);
                 ventana.dispose();
             }
         });

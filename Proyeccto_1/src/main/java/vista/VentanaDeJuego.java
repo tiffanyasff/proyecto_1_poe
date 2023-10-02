@@ -19,12 +19,16 @@ import java.util.Random;
 import java.util.ArrayList;
 import java.util.Arrays;
 import modelo.Figura;
+import modelo.Jugador;
 
 
 
 public class VentanaDeJuego extends JFrame implements ActionListener {
     private JuegoAdivinarFig juego; 
     private JFrame ventanaJuego;
+    private Jugador jugador;
+    private JLabel lblNombre;
+    private JLabel lblNombreJugador;
     private JLabel etqUno;
     private JLabel etqDos;
     private JLabel etqTres;
@@ -41,10 +45,11 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
     private int tamanoFiguraCuatro;
     Random random = new Random();
     
-    public VentanaDeJuego(){
+    public VentanaDeJuego(Jugador jugadorActual){
         ventanaJuego = new JFrame("Juego");
         ventanaJuego.setSize(700, 400);
         ventanaJuego.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jugador = jugadorActual; 
         iniciarComponentes();
     }
     
@@ -64,6 +69,15 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         etqTres = new JLabel();
         etqCuatro = new JLabel();
         separador = new JLabel();
+        
+        
+        lblNombre = new JLabel("Nombre del jugador: " + jugador.getNombre());
+        Font comicSansFont = new Font("Comic Sans MS", Font.PLAIN, 16);
+        lblNombre.setFont(comicSansFont);
+        lblNombre.setBounds(400, 10, 230, 22);
+        panel.add(lblNombre);
+        
+        
       
         
         rondas = juego.obtenerFiguras();
