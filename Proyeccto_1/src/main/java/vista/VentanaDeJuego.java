@@ -29,6 +29,7 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
     private Jugador jugador;
     private JLabel lblNombre;
     private JLabel lblNombreJugador;
+    private JLabel lblSalir;
     private JLabel etqUno;
     private JLabel etqDos;
     private JLabel etqTres;
@@ -69,7 +70,8 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         etqTres = new JLabel();
         etqCuatro = new JLabel();
         separador = new JLabel();
-        
+        lblSalir = new JLabel();
+      
         
         lblNombre = new JLabel("Nombre del jugador: " + jugador.getNombre());
         Font comicSansFont = new Font("Comic Sans MS", Font.PLAIN, 16);
@@ -77,7 +79,19 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         lblNombre.setBounds(400, 10, 230, 22);
         panel.add(lblNombre);
         
+        lblSalir = new JLabel("salir");
+        ImageIcon imagenSalir = new ImageIcon("img/salir.png");
+        lblSalir.setBounds(700, 400, 50, 50);
+        lblSalir.setIcon(new ImageIcon(imagenSalir.getImage().getScaledInstance(lblSalir.getWidth(), lblSalir.getHeight(), Image.SCALE_SMOOTH)));
+        panel.add(lblSalir);
         
+        lblSalir.addMouseListener(new MouseAdapter() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            VentanaPrincipal ventanaP = new VentanaPrincipal();
+            ventanaJuego.dispose();
+        }
+        });
       
         
         rondas = juego.obtenerFiguras();
