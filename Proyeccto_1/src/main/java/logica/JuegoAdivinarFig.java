@@ -76,6 +76,9 @@ public class JuegoAdivinarFig {
         añadirFigura(corazon);
         añadirFigura(pentagono);
         añadirFigura(hexagono);
+        for (int i = 0; i < figuras.size(); i++) {
+            System.out.println(figuras.get(i).getNombre());
+        }
         
     }
     
@@ -106,5 +109,13 @@ public class JuegoAdivinarFig {
     
     public ArrayList<Figura> obtenerFiguras() {
         return figuras;
+    }
+    
+    public void reiniciarValores(){
+        for (int i = 0; i < figuras.size(); i++) {
+            figuras.get(i).setOpcionCorrecta();
+            System.out.println("a");
+            System.out.println(figuras.get(i).getOpcionCorrecta());
+        }
     }
 }

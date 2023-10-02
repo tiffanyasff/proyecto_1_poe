@@ -10,6 +10,7 @@ package modelo;
  */
 
 
+import static java.lang.Math.random;
 import java.util.Random;
 
 public class Figura {
@@ -17,12 +18,13 @@ public class Figura {
     String tamano;
     String rutaImg;
     int opcionCorrecta;
+    Random random = new Random();
 
     public Figura(String nombre, String tamano, String rutaImg) {
         this.nombre = nombre;
         this.tamano = tamano;
         this.rutaImg = rutaImg;
-        Random random = new Random();
+        //Random random = new Random();
         this.opcionCorrecta = random.nextInt(3) + 1;
      
     }
@@ -31,8 +33,8 @@ public class Figura {
         return opcionCorrecta;
     }
 
-    public void setOpcionCorrecta(int opcionCorrecta) {
-        this.opcionCorrecta = opcionCorrecta;
+    public void setOpcionCorrecta() {
+        this.opcionCorrecta = random.nextInt(3) + 1;
     }
     
 
