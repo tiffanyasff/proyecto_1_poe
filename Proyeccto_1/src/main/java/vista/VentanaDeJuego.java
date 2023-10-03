@@ -67,7 +67,7 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         juego = new JuegoAdivinarFig();
         panel = new JPanel();
         panel.setLayout(null);
-        panel.setBackground(Color.WHITE);
+        panel.setBackground(new Color(245, 245, 220));
 
 
         
@@ -106,7 +106,8 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null, 
             "intentos: " + jugador.getIntentos() + "\n" +
             "porcentaje de aciertos: " + jugador.porcentajeAciertos() + "\n" +
-            "porcentaje de errores: " + jugador.porcentajeFallo());
+            "porcentaje de errores: " + jugador.porcentajeFallo()+ "\n" +
+            "rondas: " + jugador.getRonda());
             
         }
         });
@@ -128,9 +129,7 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         etqDos.addMouseListener(new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {            
-            String textoEtqDos = etqDos.getText();
-            
-            
+           
             if (rondas.get(ronda).validarOpcion(tamanoFiguraDos)){
                 reproducirSonidoCorrecto();
                 jugador.sumarIntentos();
@@ -152,7 +151,6 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         etqTres.addMouseListener(new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {            
-            String textoEtqTres = etqTres.getText();
             
              if (rondas.get(ronda).validarOpcion(tamanoFiguraTres)){
                 reproducirSonidoCorrecto();
@@ -175,8 +173,7 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         etqCuatro.addMouseListener(new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {          
-            String textoEtqCuatro = etqCuatro.getText();
-            
+           
             
              if (rondas.get(ronda).validarOpcion(tamanoFiguraCuatro)){
                 reproducirSonidoCorrecto();
@@ -226,7 +223,7 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         
         ImageIcon imagenSeparador = new ImageIcon("img/separador.png");
         separador = new JLabel();
-        separador.setBounds(100, -10, 100, 400);
+        separador.setBounds(120, -10, 100, 480);
         separador.setIcon(new ImageIcon(imagenSeparador.getImage().getScaledInstance(separador.getWidth(), separador.getHeight(), Image.SCALE_SMOOTH)));
         panel.add(separador);
         
@@ -246,9 +243,9 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         tamanoFiguraUno = rondas.get(ronda).getOpcionCorrecta();
         
         switch (tamanoFiguraUno) {
-            case 1 -> etqUno.setBounds(50, 120, 50, 50); // Tamaño pequeño
-            case 2 -> etqUno.setBounds(50, 120, 75, 75); // Tamaño mediano
-            case 3 -> etqUno.setBounds(50, 120, 100, 100); // Tamaño grande
+            case 1 -> etqUno.setBounds(60, 120, 50, 50); // Tamaño pequeño
+            case 2 -> etqUno.setBounds(60, 120, 75, 75); // Tamaño mediano
+            case 3 -> etqUno.setBounds(60, 120, 100, 100); // Tamaño grande
             default -> {
             }
         }
@@ -259,9 +256,9 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         ImageIcon imagen2 = new ImageIcon(ruta);
         
         switch (tamanoFiguraDos) {
-            case 1 -> etqDos.setBounds(200, 120, 50, 50); // Tamaño pequeño
-            case 2 -> etqDos.setBounds(200, 120, 75, 75); // Tamaño mediano
-            case 3 -> etqDos.setBounds(200, 120, 100, 100); // Tamaño grande
+            case 1 -> etqDos.setBounds(230, 120, 50, 50); // Tamaño pequeño
+            case 2 -> etqDos.setBounds(230, 120, 75, 75); // Tamaño mediano
+            case 3 -> etqDos.setBounds(230, 120, 100, 100); // Tamaño grande
             default -> {
             }
         }
@@ -274,8 +271,8 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         
         switch (tamanoFiguraTres) {
           case 1 -> etqTres.setBounds(350, 130, 50, 50); // Tamaño pequeño
-          case 2 -> etqTres.setBounds(320, 130, 75, 75); // Tamaño mediano
-          case 3 -> etqTres.setBounds(300, 130, 100, 100); // Tamaño grande
+          case 2 -> etqTres.setBounds(350, 130, 75, 75); // Tamaño mediano
+          case 3 -> etqTres.setBounds(350, 130, 100, 100); // Tamaño grande
           default -> {
             }
         }
@@ -287,13 +284,13 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
        ImageIcon imagen4 = new ImageIcon(ruta);
        
         switch (tamanoFiguraCuatro) {
-          case 1 -> etqCuatro.setBounds(440, 120, 50, 50); // Tamaño pequeño
-          case 2 -> etqCuatro.setBounds(450, 120, 75, 75); // Tamaño mediano
-          case 3 -> etqCuatro.setBounds(450, 120, 100, 100); // Tamaño grande
+          case 1 -> etqCuatro.setBounds(480, 120, 50, 50); // Tamaño pequeño
+          case 2 -> etqCuatro.setBounds(480, 120, 75, 75); // Tamaño mediano
+          case 3 -> etqCuatro.setBounds(480, 120, 100, 100); // Tamaño grande
           default -> {
             }
         }
-        // Puedes manejar un caso por defecto si es necesario
+        
     
         etqCuatro.setIcon(new ImageIcon(imagen4.getImage().getScaledInstance(etqCuatro.getWidth(), etqCuatro.getHeight(), Image.SCALE_SMOOTH)));
         panel.add(etqCuatro);
@@ -319,16 +316,15 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
     
     public void reproducirSonidoCorrecto() {
         try {
-            // Carga el archivo de sonido
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("audio/sndRespuestaCorrecta.wav"));
 
-            // Obtiene un clip de audio
+            
             Clip clip = AudioSystem.getClip();
 
-            // Abre el clip con el audio cargado
+            
             clip.open(audioInputStream);
 
-            // Reproduce el sonido
+            
             clip.start();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -337,22 +333,23 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
     
     public void reproducirSonidoIncorrecto() {
         try {
-            // Carga el archivo de sonido
+            
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("audio/sndRespuestaIncorrecta.wav"));
 
-            // Obtiene un clip de audio
+            
             Clip clip = AudioSystem.getClip();
 
-            // Abre el clip con el audio cargado
+            
             clip.open(audioInputStream);
 
-            // Reproduce el sonido
+            
             clip.start();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
-
+    
+    
 
     @Override
     public void actionPerformed(ActionEvent e) {

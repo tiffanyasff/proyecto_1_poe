@@ -36,7 +36,7 @@ public class VentanaPrincipal {
     
     public VentanaPrincipal(){
         ventana = new JFrame("Juego Preescolar");
-        ventana.setSize(700, 400);
+        ventana.setSize(700, 440);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         iniciarComponentes();
     }
@@ -109,11 +109,17 @@ public class VentanaPrincipal {
         btnIniciarJuego.addMouseListener(new MouseAdapter() {
         @Override
             public void mouseClicked(MouseEvent e) {
-                Jugador jugador = new Jugador(campoNombre.getText());
-                jugador.getNombre();
-                System.out.println(jugador.getNombre());
-                VentanaDeJuego ventanaJuego = new VentanaDeJuego(jugador);
-                ventana.dispose();
+                String nombreJugador = campoNombre.getText().trim(); // Obtener el texto del campo de nombre sin espacios en blanco al principio y al final
+
+                if (nombreJugador.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Debes ingresar un nombre antes de jugar.", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    Jugador jugador = new Jugador(nombreJugador);
+                    jugador.getNombre();
+                    System.out.println(jugador.getNombre());
+                    VentanaDeJuego ventanaJuego = new VentanaDeJuego(jugador);
+                    ventana.dispose();
+                }
             }
         });
         
