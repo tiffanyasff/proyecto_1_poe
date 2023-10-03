@@ -14,9 +14,10 @@ import java.util.Locale;
 
 public class Jugador {
     String nombre; 
-    int intentos;
-    double intentosFallados;
-    double intentosAcertados;
+    int intentos = 0;
+    double intentosFallados = 0;
+    double intentosAcertados = 0;
+    int ronda = 1;
 
     public Jugador(String nombre) {
         this.nombre = nombre;
@@ -66,8 +67,18 @@ public class Jugador {
     public void setIntentosAcertados(double intentosAcertados) {
         this.intentosAcertados = intentosAcertados;
     }
+
+    public int getRonda() {
+        return ronda;
+    }
+
+    public void setRonda(int ronda) {
+        this.ronda = ronda;
+    }
     
-    
+    public void sumarRonda(){
+        this.ronda += 1;
+    }
     
     public double porcentajeAciertos(){
         if (intentos == 0) {

@@ -45,7 +45,7 @@ public class VentanaPrincipal {
         panel = new JPanel();
         panel.setLayout(null);
 
-        Color fondoAzulClaro = new Color(173, 216, 230);
+        Color fondoAzulClaro = new Color(245, 245, 220);
         panel.setBackground(fondoAzulClaro);
 
        Font comicSansFont = new Font("Comic Sans MS", Font.PLAIN, 28);
@@ -88,7 +88,7 @@ public class VentanaPrincipal {
         
         ImageIcon img = new ImageIcon("img/boton_instrucciones.png");
         btnInstrucciones = new JLabel();
-        btnInstrucciones.setBounds(1, 290, 220, 70);
+        btnInstrucciones.setBounds(10, 315, 70, 70);
         btnInstrucciones.setIcon(new ImageIcon(img.getImage().getScaledInstance(btnInstrucciones.getWidth(), btnInstrucciones.getHeight(), Image.SCALE_SMOOTH)));
         panel.add(btnInstrucciones);
         

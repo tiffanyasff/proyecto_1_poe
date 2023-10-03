@@ -15,9 +15,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.Arrays;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import modelo.Figura;
 import modelo.Jugador;
 
@@ -82,8 +86,9 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         lblNombre.setBounds(400, 10, 230, 22);
         panel.add(lblNombre);
         
-        lblRonda = new JLabel("Ronda: " );
-        lblRonda.setBounds(200, 10, 230, 22);
+        lblRonda = new JLabel("Ronda: " + jugador.getRonda());
+        lblRonda.setBounds(200, 10, 70, 22);
+        lblRonda.setFont(comicSansFont);
         panel.add(lblRonda);
         
         lblSalir = new JLabel("salir");
@@ -99,9 +104,9 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
             ventanaJuego.dispose();
         
             JOptionPane.showMessageDialog(null, 
-    "intentos: " + jugador.getIntentos() + "\n" +
-    "porcentaje de aciertos: " + jugador.porcentajeAciertos() + "\n" +
-    "porcentaje de errores: " + jugador.porcentajeFallo());
+            "intentos: " + jugador.getIntentos() + "\n" +
+            "porcentaje de aciertos: " + jugador.porcentajeAciertos() + "\n" +
+            "porcentaje de errores: " + jugador.porcentajeFallo());
             
         }
         });
@@ -117,6 +122,9 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         }
         });
         
+        
+        
+        
         etqDos.addMouseListener(new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {            
@@ -124,10 +132,14 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
             
             
             if (rondas.get(ronda).validarOpcion(tamanoFiguraDos)){
+                reproducirSonidoCorrecto();
                 jugador.sumarIntentos();
                 jugador.sumarIntentosAcertados();
-                asignarImg(rondas.get(obtenerNumeroAleatorio()).getRutaImg());  
+                jugador.sumarRonda();
+                asignarImg(rondas.get(obtenerNumeroAleatorio()).getRutaImg());
+                lblRonda.setText("Ronda: " + jugador.getRonda());
             }else {
+                reproducirSonidoIncorrecto();
                 jugador.sumarIntentos();
                 jugador.sumarIntentosFallados();
                 System.out.println("opcion incorrecta");
@@ -135,23 +147,30 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         }
         });
         
+        
+        
         etqTres.addMouseListener(new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {            
             String textoEtqTres = etqTres.getText();
             
              if (rondas.get(ronda).validarOpcion(tamanoFiguraTres)){
+                reproducirSonidoCorrecto();
                 jugador.sumarIntentos();
                 jugador.sumarIntentosAcertados();
+                jugador.sumarRonda();
                 asignarImg(rondas.get(obtenerNumeroAleatorio()).getRutaImg());
-                  
+                lblRonda.setText("Ronda: " + jugador.getRonda());
             }else {
+                reproducirSonidoIncorrecto();
                 System.out.println("opcion incorrecta");
                 jugador.sumarIntentos();
                 jugador.sumarIntentosFallados();
             }
         }
         });
+        
+        
         
         etqCuatro.addMouseListener(new MouseAdapter() {
         @Override
@@ -160,12 +179,14 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
             
             
              if (rondas.get(ronda).validarOpcion(tamanoFiguraCuatro)){
+                reproducirSonidoCorrecto();
                 jugador.sumarIntentos();
                 jugador.sumarIntentosAcertados();
-               
+                jugador.sumarRonda();
                 asignarImg(rondas.get(obtenerNumeroAleatorio()).getRutaImg());
-                  
+                lblRonda.setText("Ronda: " + jugador.getRonda());
             }else {
+                reproducirSonidoIncorrecto();
                 System.out.println("opcion incorrecta");
                 jugador.sumarIntentos();
                 jugador.sumarIntentosFallados();
@@ -208,6 +229,8 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         separador.setBounds(100, -10, 100, 400);
         separador.setIcon(new ImageIcon(imagenSeparador.getImage().getScaledInstance(separador.getWidth(), separador.getHeight(), Image.SCALE_SMOOTH)));
         panel.add(separador);
+        
+        
        
        
     }
@@ -294,7 +317,42 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         return numeroAleatorio;
     }
     
+    public void reproducirSonidoCorrecto() {
+        try {
+            // Carga el archivo de sonido
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("audio/sndRespuestaCorrecta.wav"));
+
+            // Obtiene un clip de audio
+            Clip clip = AudioSystem.getClip();
+
+            // Abre el clip con el audio cargado
+            clip.open(audioInputStream);
+
+            // Reproduce el sonido
+            clip.start();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
     
+    public void reproducirSonidoIncorrecto() {
+        try {
+            // Carga el archivo de sonido
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("audio/sndRespuestaIncorrecta.wav"));
+
+            // Obtiene un clip de audio
+            Clip clip = AudioSystem.getClip();
+
+            // Abre el clip con el audio cargado
+            clip.open(audioInputStream);
+
+            // Reproduce el sonido
+            clip.start();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
