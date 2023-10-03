@@ -8,6 +8,10 @@ package modelo;
  *
  * @author pablo
  */
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
+
 public class Jugador {
     String nombre; 
     int intentos;
@@ -71,7 +75,12 @@ public class Jugador {
         }
 
         double porcentaje = ((double) intentosAcertados / intentos) * 100.0;
-        return porcentaje;
+        
+        DecimalFormatSymbols separadores = new DecimalFormatSymbols(Locale.US);
+        DecimalFormat df = new DecimalFormat("#.##", separadores);
+        return Double.parseDouble(df.format(porcentaje));
+        
+       // return porcentaje;
     }
     
     public double porcentajeFallo(){
@@ -80,7 +89,12 @@ public class Jugador {
         }
 
         double porcentaje = ((double) intentosFallados / intentos) * 100.0;
-        return porcentaje;
+        
+        DecimalFormatSymbols separadores = new DecimalFormatSymbols(Locale.US);
+        DecimalFormat df = new DecimalFormat("#.##", separadores);
+        return Double.parseDouble(df.format(porcentaje));
+         
+        //return porcentaje;
     }
     
     

@@ -23,6 +23,8 @@ import modelo.Jugador;
 
 
 
+
+
 public class VentanaDeJuego extends JFrame implements ActionListener {
     private JuegoAdivinarFig juego; 
     private JFrame ventanaJuego;
@@ -37,6 +39,7 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
     private JLabel separador;
     private JFrame frame;
     private JPanel panel;
+    private JLabel lblRonda;
     private int ronda;
     private ArrayList<Figura> rondas;
     private ArrayList<Integer> opciones = new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8));
@@ -79,6 +82,10 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         lblNombre.setBounds(400, 10, 230, 22);
         panel.add(lblNombre);
         
+        lblRonda = new JLabel("Ronda: " );
+        lblRonda.setBounds(200, 10, 230, 22);
+        panel.add(lblRonda);
+        
         lblSalir = new JLabel("salir");
         ImageIcon imagenSalir = new ImageIcon("img/salir.png");
         lblSalir.setBounds(700, 400, 50, 50);
@@ -119,7 +126,7 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
             if (rondas.get(ronda).validarOpcion(tamanoFiguraDos)){
                 jugador.sumarIntentos();
                 jugador.sumarIntentosAcertados();
-                asignarImg(rondas.get(obtenerNumeroAleatorio()).getRutaImg());      
+                asignarImg(rondas.get(obtenerNumeroAleatorio()).getRutaImg());  
             }else {
                 jugador.sumarIntentos();
                 jugador.sumarIntentosFallados();
@@ -198,7 +205,7 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         
         ImageIcon imagenSeparador = new ImageIcon("img/separador.png");
         separador = new JLabel();
-        separador.setBounds(100, -70, 100, 600);
+        separador.setBounds(100, -10, 100, 400);
         separador.setIcon(new ImageIcon(imagenSeparador.getImage().getScaledInstance(separador.getWidth(), separador.getHeight(), Image.SCALE_SMOOTH)));
         panel.add(separador);
        

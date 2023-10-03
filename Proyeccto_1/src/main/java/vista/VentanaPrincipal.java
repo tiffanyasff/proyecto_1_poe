@@ -48,7 +48,8 @@ public class VentanaPrincipal {
         Color fondoAzulClaro = new Color(173, 216, 230);
         panel.setBackground(fondoAzulClaro);
 
-        Font comicSansFont = new Font("Comic Sans MS", Font.PLAIN, 28);
+       Font comicSansFont = new Font("Comic Sans MS", Font.PLAIN, 28);
+       
 
         etqNombre = new JLabel("Nombre del jugador: ");
         etqNombre.setBounds(225, 1, 280, 200);
