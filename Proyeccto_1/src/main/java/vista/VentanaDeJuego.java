@@ -8,6 +8,15 @@ package vista;
  *
  * @author USER CT
  */
+
+
+/*
+Pablo Becerrra G. - 2243506 - pablo.becerra@correounivalle.edu.co
+Tiffany Torres F. - 2241747 - tiffanyasff@gmail.com
+
+Fundamentos de programacion orientada a eventos
+
+*/
 import javax.swing.*;
 import java.awt.*;
 import logica.JuegoAdivinarFig;
@@ -41,7 +50,6 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
     private JLabel etqTres;
     private JLabel etqCuatro;
     private JLabel separador;
-    private JFrame frame;
     private JPanel panel;
     private JLabel lblRonda;
     private int ronda;
@@ -71,7 +79,7 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
 
 
         
-        frame = new JFrame("Mi Ventana");
+        
         etqUno = new JLabel();
         etqDos = new JLabel();
         etqTres = new JLabel();
@@ -80,23 +88,31 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         lblSalir = new JLabel();
       
         
+        //label de el nombre
         lblNombre = new JLabel("Nombre del jugador: " + jugador.getNombre());
         Font comicSansFont = new Font("Comic Sans MS", Font.PLAIN, 16);
         lblNombre.setFont(comicSansFont);
         lblNombre.setBounds(400, 10, 230, 22);
         panel.add(lblNombre);
         
+        
+        
+        // label de la ronda
         lblRonda = new JLabel("Ronda: " + jugador.getRonda());
-        lblRonda.setBounds(200, 10, 70, 22);
+        lblRonda.setBounds(200, 10, 80, 22);
         lblRonda.setFont(comicSansFont);
         panel.add(lblRonda);
         
+        
+        // label del boton salir
         lblSalir = new JLabel("salir");
         ImageIcon imagenSalir = new ImageIcon("img/salir.png");
         lblSalir.setBounds(700, 400, 50, 50);
         lblSalir.setIcon(new ImageIcon(imagenSalir.getImage().getScaledInstance(lblSalir.getWidth(), lblSalir.getHeight(), Image.SCALE_SMOOTH)));
         panel.add(lblSalir);
         
+        
+        //escucha de el boton salir 
         lblSalir.addMouseListener(new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -112,10 +128,12 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         }
         });
       
-        
+        // se asigna el arreglo de figuras a "rondas" 
         rondas = juego.obtenerFiguras();
         asignarImg(rondas.get(obtenerNumeroAleatorio()).getRutaImg());
         
+        
+        // escucha de la imagen 1
         etqUno.addMouseListener(new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -125,7 +143,7 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         
         
         
-        
+        // escucha de la imagen 2
         etqDos.addMouseListener(new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {            
@@ -147,7 +165,7 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         });
         
         
-        
+        // escucha de la imagen 3
         etqTres.addMouseListener(new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {            
@@ -169,12 +187,11 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         });
         
         
-        
+        // escucha de la imagen 4
         etqCuatro.addMouseListener(new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {          
-           
-            
+                       
              if (rondas.get(ronda).validarOpcion(tamanoFiguraCuatro)){
                 reproducirSonidoCorrecto();
                 jugador.sumarIntentos();
@@ -198,11 +215,11 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         
     }
     
+    
+    // en esta funcion se le agregan valores aleatorios entre 1 y 3 sin repetir a las imagenes 2,3 y 4 
     private void asignarValoresAleatorios() {
         ArrayList<Integer> valoresDisponibles = new ArrayList<>(Arrays.asList(1, 2, 3));
-        //Random random = new Random();
-
-        
+               
         int indexDos = random.nextInt(valoresDisponibles.size());
         int valorEtqDos = valoresDisponibles.get(indexDos);
         etqDos.setText(String.valueOf(valorEtqDos));
@@ -221,18 +238,18 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         etqCuatro.setText(String.valueOf(valorEtqCuatro));
         tamanoFiguraCuatro = valorEtqCuatro;
         
+        
         ImageIcon imagenSeparador = new ImageIcon("img/separador.png");
         separador = new JLabel();
         separador.setBounds(120, -10, 100, 480);
         separador.setIcon(new ImageIcon(imagenSeparador.getImage().getScaledInstance(separador.getWidth(), separador.getHeight(), Image.SCALE_SMOOTH)));
         panel.add(separador);
-        
-        
-       
-       
+                          
     }
     
     
+    // en esta funcion recibe un str que es la ruta donde estara almacenado la imagen de la ronda, a las imagenes 2, 3 y 4 se les asignara el tamaño dependiendo el valor que se halla
+    // asignado en la funcion asignarValoresAleatorios() 
     public void asignarImg(String ruta){
        
         asignarValoresAleatorios();
@@ -242,10 +259,12 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         panel.add(etqUno);
         tamanoFiguraUno = rondas.get(ronda).getOpcionCorrecta();
         
+        
+        // en estos switch case se les asigna el tamaño dependiendo el valor de tamaño que tengan (1, 2 y 3)
         switch (tamanoFiguraUno) {
-            case 1 -> etqUno.setBounds(60, 120, 50, 50); // Tamaño pequeño
-            case 2 -> etqUno.setBounds(60, 120, 75, 75); // Tamaño mediano
-            case 3 -> etqUno.setBounds(60, 120, 100, 100); // Tamaño grande
+            case 1 -> etqUno.setBounds(60, 120, 50, 50); 
+            case 2 -> etqUno.setBounds(60, 120, 75, 75); 
+            case 3 -> etqUno.setBounds(60, 120, 100, 100);
             default -> {
             }
         }
@@ -299,6 +318,9 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
     
     }
     
+    
+    // esa funcion es la encargada de asignar el indice de la ronda actual, escoje un numero aleatorio entre 0 y 8 (indices de el arreglo de las figuras) y lo retorna a la vez que lo
+    // elimina de el arreglo de opciones, si el arreglo esta vacio lo volvera a llenar con los mismos valores, asi, el juego sera infinito y aleatorio hasta que el usuario desee terminarlo
     public int obtenerNumeroAleatorio() {
         if (opciones.isEmpty()) {
             opciones.addAll(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8));
@@ -314,35 +336,26 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         return numeroAleatorio;
     }
     
+    
+    // funcion que reproduce el sonido de opcion correcra 
     public void reproducirSonidoCorrecto() {
         try {
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("audio/sndRespuestaCorrecta.wav"));
-
-            
-            Clip clip = AudioSystem.getClip();
-
-            
-            clip.open(audioInputStream);
-
-            
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("audio/sndRespuestaCorrecta.wav"));            
+            Clip clip = AudioSystem.getClip();            
+            clip.open(audioInputStream);            
             clip.start();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
     
+    
+    // funcion que reproduce el sonido de opcion incorrecta
     public void reproducirSonidoIncorrecto() {
-        try {
-            
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("audio/sndRespuestaIncorrecta.wav"));
-
-            
-            Clip clip = AudioSystem.getClip();
-
-            
-            clip.open(audioInputStream);
-
-            
+        try {            
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("audio/sndRespuestaIncorrecta.wav"));           
+            Clip clip = AudioSystem.getClip();            
+            clip.open(audioInputStream);            
             clip.start();
         } catch (Exception ex) {
             ex.printStackTrace();

@@ -18,13 +18,6 @@ public class main {
 
 
         VentanaPrincipal ventana = new VentanaPrincipal();
-        //JuegoAdivinarFig juego = new JuegoAdivinarFig();
-        //juego.iniciarJuego();
-
-     
-
-        //VentanaPrincipal ventana = new VentanaPrincipal();
-        //VentanaDeJuego ventanaJuego = new VentanaDeJuego();
 
     }
     

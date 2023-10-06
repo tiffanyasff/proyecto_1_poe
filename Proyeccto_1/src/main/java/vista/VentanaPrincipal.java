@@ -10,12 +10,21 @@ package vista;
  */
 
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.Timer;
 import modelo.Jugador;
 
 public class VentanaPrincipal {
@@ -51,11 +60,14 @@ public class VentanaPrincipal {
        Font comicSansFont = new Font("Comic Sans MS", Font.PLAIN, 28);
        
 
+        // label de el nombre del jugador
         etqNombre = new JLabel("Nombre del jugador: ");
         etqNombre.setBounds(225, 1, 280, 200);
         etqNombre.setFont(comicSansFont);
         panel.add(etqNombre);
 
+        
+        // etiqueta para el titulo 
         etqTitulo = new JLabel("Pon a prueba tu capacidad visual ");
         etqTitulo.setBounds(150, -60, 450, 200);
         etqTitulo.setFont(comicSansFont);
@@ -71,12 +83,14 @@ public class VentanaPrincipal {
         rainbowTimer.start();
         
         
+        // campo del el nombre
         campoNombre = new JTextField();
         campoNombre.setBounds(270, 150, 180, 40);
         campoNombre.setFont(comicSansFont);
         panel.add(campoNombre);
         
         
+        // boton para iniciae juego
         btnIniciarJuego = new JButton("¡Vamos a jugar!");
         btnIniciarJuego.setFont(comicSansFont);
         btnIniciarJuego.setBounds(210, 215, 300, 60);
@@ -86,12 +100,15 @@ public class VentanaPrincipal {
         
         
         
+        // etiqueta para el boton de las instrucciones
         ImageIcon img = new ImageIcon("img/boton_instrucciones.png");
         btnInstrucciones = new JLabel();
         btnInstrucciones.setBounds(10, 315, 70, 70);
         btnInstrucciones.setIcon(new ImageIcon(img.getImage().getScaledInstance(btnInstrucciones.getWidth(), btnInstrucciones.getHeight(), Image.SCALE_SMOOTH)));
         panel.add(btnInstrucciones);
         
+        
+        // escucha de el boton de instrucciones
         btnInstrucciones.addMouseListener(new MouseAdapter() {
         @Override
             public void mouseClicked(MouseEvent e) {
@@ -106,6 +123,8 @@ public class VentanaPrincipal {
             }
         });
         
+        
+        // escucha de el boton de iniciar juego
         btnIniciarJuego.addMouseListener(new MouseAdapter() {
         @Override
             public void mouseClicked(MouseEvent e) {

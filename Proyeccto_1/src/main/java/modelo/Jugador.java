@@ -80,6 +80,8 @@ public class Jugador {
         this.ronda += 1;
     }
     
+    
+    // funcion para calcular el porcentaje de fallos del usuario
     public double porcentajeAciertos(){
         if (intentos == 0) {
             return 0.0; 
@@ -90,10 +92,11 @@ public class Jugador {
         DecimalFormatSymbols separadores = new DecimalFormatSymbols(Locale.US);
         DecimalFormat df = new DecimalFormat("#.##", separadores);
         return Double.parseDouble(df.format(porcentaje));
-        
-       // return porcentaje;
+             
     }
     
+    
+    // funcion para calcular el porcentaje de fallos del usuario
     public double porcentajeFallo(){
         if (intentos == 0) {
             return 0.0; 
@@ -104,8 +107,7 @@ public class Jugador {
         DecimalFormatSymbols separadores = new DecimalFormatSymbols(Locale.US);
         DecimalFormat df = new DecimalFormat("#.##", separadores);
         return Double.parseDouble(df.format(porcentaje));
-         
-        //return porcentaje;
+               
     }
     
     
