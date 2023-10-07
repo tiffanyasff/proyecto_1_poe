@@ -12,7 +12,7 @@ package vista;
 
 /*
 Pablo Becerrra G. - 2243506 - pablo.becerra@correounivalle.edu.co
-Tiffany Torres F. - 2241747 - tiffanyasff@gmail.com
+Tiffany Torres F. - 2241747 - tiffany.torre@correounivalle.edu.do
 
 Fundamentos de programacion orientada a eventos
 
@@ -49,6 +49,8 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
     private JLabel etqDos;
     private JLabel etqTres;
     private JLabel etqCuatro;
+    private JLabel lblIntentos;
+    private JLabel lblFallos;
     private JLabel separador;
     private JPanel panel;
     private JLabel lblRonda;
@@ -95,6 +97,19 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
         lblNombre.setBounds(400, 10, 230, 22);
         panel.add(lblNombre);
         
+        
+        //Label de Intentos
+        lblIntentos = new JLabel("Intentos: " + jugador.getIntentos());
+        lblIntentos.setFont(comicSansFont);
+        lblIntentos.setBounds(200, 420, 120, 22);
+        panel.add(lblIntentos);
+        
+        
+        //Label de Fallos
+        lblFallos = new JLabel("Fallos: " + jugador.getIntentosFallados());
+        lblFallos.setFont(comicSansFont);
+        lblFallos.setBounds(400, 420, 120, 22);
+        panel.add(lblFallos);
         
         
         // label de la ronda
@@ -155,11 +170,15 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
                 jugador.sumarRonda();
                 asignarImg(rondas.get(obtenerNumeroAleatorio()).getRutaImg());
                 lblRonda.setText("Ronda: " + jugador.getRonda());
+                lblIntentos.setText("Intentos: " + jugador.getIntentos());
+                lblFallos.setText("Fallos: " + jugador.getIntentosFallados());
             }else {
                 reproducirSonidoIncorrecto();
                 jugador.sumarIntentos();
                 jugador.sumarIntentosFallados();
                 System.out.println("opcion incorrecta");
+                lblIntentos.setText("Intentos: " + jugador.getIntentos());
+                lblFallos.setText("Fallos: " + jugador.getIntentosFallados());
             }
         }
         });
@@ -177,11 +196,15 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
                 jugador.sumarRonda();
                 asignarImg(rondas.get(obtenerNumeroAleatorio()).getRutaImg());
                 lblRonda.setText("Ronda: " + jugador.getRonda());
+                lblIntentos.setText("Intentos: " + jugador.getIntentos());
+                lblFallos.setText("Fallos: " + jugador.getIntentosFallados());
             }else {
                 reproducirSonidoIncorrecto();
                 System.out.println("opcion incorrecta");
                 jugador.sumarIntentos();
                 jugador.sumarIntentosFallados();
+                lblIntentos.setText("Intentos: " + jugador.getIntentos());
+                lblFallos.setText("Fallos: " + jugador.getIntentosFallados());
             }
         }
         });
@@ -199,11 +222,15 @@ public class VentanaDeJuego extends JFrame implements ActionListener {
                 jugador.sumarRonda();
                 asignarImg(rondas.get(obtenerNumeroAleatorio()).getRutaImg());
                 lblRonda.setText("Ronda: " + jugador.getRonda());
+                lblIntentos.setText("Intentos: " + jugador.getIntentos());
+                lblFallos.setText("Fallos: " + jugador.getIntentosFallados());
             }else {
                 reproducirSonidoIncorrecto();
                 System.out.println("opcion incorrecta");
                 jugador.sumarIntentos();
                 jugador.sumarIntentosFallados();
+                lblIntentos.setText("Intentos: " + jugador.getIntentos());
+                lblFallos.setText("Fallos: " + jugador.getIntentosFallados());
             }
         }
         });
